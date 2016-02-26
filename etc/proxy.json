@@ -1,0 +1,22 @@
+{
+  "servers": {
+    "udp": {
+      "port": 8125,
+      "threads": 2
+    },
+    "tcp": {
+      "port": 8125
+    }
+  },
+  "log_level": "info",
+  "backends": {
+    "stdout": true,
+    "aggregator": [
+        {
+            "host": "localhost",
+            "port": 9090
+        }
+    ]
+  },
+  "workers": 2
+}

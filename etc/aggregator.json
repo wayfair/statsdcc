@@ -1,0 +1,32 @@
+{
+    "name": "system.aggregator.node_a",
+    "servers": {
+      "udp": {
+        "port": 9090,
+        "threads": 3,
+        "recv_buffer": 33554431
+      },
+      "tcp": {
+        "port": 9090
+      }
+    },
+    "frequency": 10,
+    "percentiles": [90],
+    "workers": 3,
+    "log_level": "info",
+    "backends": {
+      "stdout": true,
+      "carbon": [
+        {
+          "shard": "1",
+          "host": "localhost",
+          "port": 3101
+        },
+        {
+          "shard": "2",
+          "host": "localhost",
+          "port": 3102
+        }
+      ]
+    }
+}

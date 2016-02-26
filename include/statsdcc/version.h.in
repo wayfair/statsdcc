@@ -1,0 +1,9 @@
+
+#ifndef INCLUDE_STATSDCC_VERSION_H_
+#define INCLUDE_STATSDCC_VERSION_H_
+
+#define __VERSION "${PROJECT_VERSION}"
+#define __BUILD   "${BUILD}"
+#define __DEBUG   ${debug}
+
+#endif  // INCLUDE_STATSDCC_VERSION_H_
