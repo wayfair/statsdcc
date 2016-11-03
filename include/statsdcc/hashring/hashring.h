@@ -61,15 +61,6 @@ class Hashring {
     }
 
     inline bool operator<(const RingElement &rhs) const {
-      if (this->hash == rhs.hash) {
-        // TODO(sdomalapalli): check if it is necessary
-        // to implement v8 sort algo instead of this patch
-        if (this->shard == "05" ||
-            this->shard == "22" ||
-            this->shard == "13") {
-          return false;
-        }
-      }
       return this->hash <= rhs.hash;
     }
 
