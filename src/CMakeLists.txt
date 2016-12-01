@@ -46,6 +46,7 @@ target_link_libraries (proxy
   config
   logger
   ${JSONCPP}
+  ${BOOST_REGEX}
   ${TCMALLOC_MINIMAL}
   ${MICROHTTPD}
   pthread

@@ -19,6 +19,11 @@ ProxyConfig::ProxyConfig(const Json::Value& json)
       this->backends.stdout = true;
     }
   }
+
+  auto blklist = json["blacklist"];
+  for (auto itr = blklist.begin(); itr != blklist.end(); ++itr) {
+    this->blacklist.push_back(boost::regex(itr->asString()));
+  }
 }
 
 Json::Value ProxyConfig::to_json() {

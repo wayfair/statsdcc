@@ -74,6 +74,20 @@ void Worker::process() {
     metric = std::string(metric_ptr);
     tc_free(metric_ptr);
 
+    // drop if metric in blacklist
+    bool drop = false;
+    for (auto itr = config->blacklist.cbegin();
+      itr != config->blacklist.cend();
+      ++itr) {
+
+      if (boost::regex_match(metric, *itr)) {
+        ::logger->debug("blacklist " + metric);
+        drop = true;
+        break;
+      }
+    }
+    if (drop) continue;
+
     if (config->backends.stdout) {
       std::cout<< metric<< std::endl;
     }

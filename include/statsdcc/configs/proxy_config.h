@@ -3,6 +3,7 @@
 #define INCLUDE_STATSDCC_CONFIGS_PROXY_CONFIG_H_
 
 #include <json/json.h>
+#include <boost/regex.hpp>
 
 #include <memory>
 #include <string>
@@ -32,6 +33,8 @@ class ProxyConfig : public Config {
 
     bool stdout;
   } backends;
+
+  std::vector<boost::regex> blacklist;
 };
 
 }  // namespace configs
