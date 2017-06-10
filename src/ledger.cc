@@ -168,23 +168,34 @@ void Ledger::process() {
           ++threshold_itr) {
         double pct =
           (*threshold_itr < 0) ? -(*threshold_itr) : (*threshold_itr);
+         int num_in_threshold = 0;
 
         if (count > 1) {
-          double num_in_threshold = round(pct / 100 * count);
+          num_in_threshold = round(pct / 100 * count);
           if (0 == num_in_threshold) {
             continue;
           }
           threshold_boundary = values[num_in_threshold - 1];
         }
 
+        double pct_sum = 0;
+        for (unsigned int i = 0; i < num_in_threshold; ++i) {
+            pct_sum += values[i];
+        }
+        double pct_mean = pct_sum / num_in_threshold;
+
         // generate pct name
         char clean_pct[17] = {0};
-        snprintf(clean_pct, sizeof(clean_pct), "upper_%g", pct);
+        snprintf(clean_pct, sizeof(clean_pct), "%g", pct);
         for (unsigned int i = 0; i < strlen(clean_pct); ++i) {
           clean_pct[i] = ('.' == clean_pct[i]) ? '_' : clean_pct[i];
         }
 
-        current_timer_data[clean_pct] = threshold_boundary;
+        current_timer_data[std::string("upper_") + std::string(clean_pct)] = threshold_boundary;
+        current_timer_data[std::string("count_") + std::string(clean_pct)] = num_in_threshold;
+        current_timer_data[std::string("sum_") + std::string(clean_pct)] = pct_sum;
+        current_timer_data[std::string("mean_") + std::string(clean_pct)] = pct_mean;
+
       }  // foreach percentile
 
       current_timer_data["upper"] = max;
