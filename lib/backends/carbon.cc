@@ -45,7 +45,7 @@ void Carbon::flush_stats(const Ledger& ledger, int flusher_id) {
 
   // prefix for all stats
   this->prefix =
-    ::config->prefix
+    ::config->prefix;
 
   // counters
   for (auto counter_itr = ledger.counters.cbegin();
