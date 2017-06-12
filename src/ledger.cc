@@ -168,7 +168,8 @@ void Ledger::process() {
           ++threshold_itr) {
         double pct =
           (*threshold_itr < 0) ? -(*threshold_itr) : (*threshold_itr);
-         int num_in_threshold = 0;
+         // Int is potentially too short since we could have more than 65K metrics in the flush window
+         unsigned long num_in_threshold = 0;
 
         if (count > 1) {
           num_in_threshold = round(pct / 100 * count);
