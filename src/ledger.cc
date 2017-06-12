@@ -180,7 +180,7 @@ void Ledger::process() {
         }
 
         double pct_sum = 0;
-        for (int i = 0; i < num_in_threshold; ++i) {
+        for (unsigned long i = 0; i < num_in_threshold; ++i) {
             pct_sum += values[i];
         }
         double pct_mean = pct_sum / num_in_threshold;
