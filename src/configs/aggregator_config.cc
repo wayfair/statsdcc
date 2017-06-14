@@ -10,6 +10,10 @@ namespace statsdcc { namespace configs {
 AggregatorConfig::AggregatorConfig(const Json::Value& json)
   : Config(json) {
   this->name = json.get("name", "statsdcc").asString();
+  this->prefix = json.get("prefix", "").asString();
+  if(!this->prefix.empty()) {
+    this->prefix = this->prefix + ".";
+  }
 
   this->frequency = json.get("frequency", 10).asInt();
 

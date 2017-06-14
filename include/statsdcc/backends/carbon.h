@@ -59,6 +59,9 @@ class Carbon: public statsdcc::backends::Backend {
 
   // prefix for aggregator stats
   std::string prefix_stats;
+
+  // prefix for all satts
+  std::string prefix;
 };
 
 }  // namespace backends
