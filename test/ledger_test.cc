@@ -67,6 +67,7 @@ class LedgerTest: public ::testing::Test {
     // initialize for processing
     ledger.buffer("counter_rate:10000|c");
 
+    // Timer data for general tests
     ledger.buffer("timer_data:1|ms");
     ledger.buffer("timer_data:2|ms");
     ledger.buffer("timer_data:3|ms");
@@ -77,6 +78,17 @@ class LedgerTest: public ::testing::Test {
     ledger.buffer("timer_data:8|ms");
     ledger.buffer("timer_data:9|ms");
     ledger.buffer("timer_data:10|ms");
+
+    // Timer data for median with odd # timers
+    ledger.buffer("timer_data_odd:1|ms");
+    ledger.buffer("timer_data_odd:2|ms");
+    ledger.buffer("timer_data_odd:3|ms");
+    ledger.buffer("timer_data_odd:4|ms");
+    ledger.buffer("timer_data_odd:5|ms");
+    ledger.buffer("timer_data_odd:6|ms");
+    ledger.buffer("timer_data_odd:7|ms");
+    ledger.buffer("timer_data_odd:8|ms");
+    ledger.buffer("timer_data_odd:9|ms");
 
     ledger.process();
 
@@ -165,7 +177,15 @@ TEST_F(LedgerTest, timer_data) {
   EXPECT_EQ(1, timer_data["timer_data"]["lower"]);
   EXPECT_EQ(10, timer_data["timer_data"]["count"]);
   EXPECT_EQ(5.5, timer_data["timer_data"]["mean"]);
+  EXPECT_EQ(5.5, timer_data["timer_data"]["median"]);
   EXPECT_EQ(9, timer_data["timer_data"]["upper_90"]);
+  EXPECT_EQ(9, timer_data["timer_data"]["count_90"]);
+  EXPECT_EQ(45, timer_data["timer_data"]["sum_90"]);
+  EXPECT_EQ(5, timer_data["timer_data"]["mean_90"]);
+}
+
+TEST_F(LedgerTest, timer_data_odd) {
+  EXPECT_EQ(5, timer_data["timer_data_odd"]["median"]);
 }
 
 }  // namespace statsdcc
