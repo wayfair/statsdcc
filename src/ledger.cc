@@ -150,6 +150,7 @@ void Ledger::process() {
 
       // get count, sum, mean, min, and max
       int count = values.size();
+      int mid = count / 2;
       double min = values.front();
       double max = values.back();
       double sum = 0;
@@ -159,6 +160,13 @@ void Ledger::process() {
         sum += *value_itr;
       }
       double mean = sum / count;
+
+      double median = 0;
+      if (count % 2 == 0) {
+          median = values[mid];
+      } else {
+          median = (values[mid-1] + values[mid]) / 2;
+      }
 
       // initialize sum, mean, and threshold boundary
       double threshold_boundary = max;
@@ -203,6 +211,7 @@ void Ledger::process() {
       current_timer_data["lower"] = min;
       current_timer_data["count"] = this->timer_counters[key];
       current_timer_data["mean"] = mean;
+      current_timer_data["median"] = median;
     }
 
     this->timer_data[key] = current_timer_data;
