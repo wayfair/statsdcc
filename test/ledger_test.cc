@@ -165,6 +165,7 @@ TEST_F(LedgerTest, timer_data) {
   EXPECT_EQ(1, timer_data["timer_data"]["lower"]);
   EXPECT_EQ(10, timer_data["timer_data"]["count"]);
   EXPECT_EQ(5.5, timer_data["timer_data"]["mean"]);
+  EXPECT_EQ(5.5, timer_data["timer_data"]["median"]);
   EXPECT_EQ(9, timer_data["timer_data"]["upper_90"]);
   EXPECT_EQ(9, timer_data["timer_data"]["count_90"]);
   EXPECT_EQ(45, timer_data["timer_data"]["sum_90"]);
