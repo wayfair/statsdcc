@@ -163,9 +163,9 @@ void Ledger::process() {
 
       double median = 0;
       if (count % 2 == 0) {
-          median = values[mid];
-      } else {
           median = (values[mid-1] + values[mid]) / 2;
+      } else {
+          median = values[mid];
       }
 
       // initialize sum, mean, and threshold boundary
