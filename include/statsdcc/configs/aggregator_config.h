@@ -31,6 +31,8 @@ class AggregatorConfig : public Config {
 
   std::string name;  // default: statsdcc
 
+  std::string prefix;
+
   int frequency;       // default: 10
 
   std::vector<int> percentiles;  // default: [90]
