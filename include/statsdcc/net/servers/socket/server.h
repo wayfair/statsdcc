@@ -13,7 +13,8 @@
 #include "statsdcc/threads_info_interface.h"
 #include "statsdcc/thread_guard.h"
 
-#define MAX_MSG_SIZE 1500
+// assuming max udp packet size is roughly 64k
+#define MAX_MSG_SIZE 65536
 
 namespace statsdcc { namespace net { namespace servers { namespace socket {
 
