@@ -1,0 +1,16 @@
+Source: statsdcc
+Section: net
+Priority: optional
+Maintainer: Hervé BRY (setaou) <herve.bry@geneanet.org>
+Build-Depends: debhelper (>= 9), cmake, libboost-dev, libssl-dev, libjsoncpp-dev, libmicrohttpd-dev, libboost-regex-dev, libgoogle-perftools-dev
+Standards-Version: 4.1.2
+Homepage: https://github.com/geneanet/statsdcc
+Vcs-Git: https://github.com/geneanet/statsdcc.git
+Vcs-Browser: https://github.com/geneanet/statsdcc
+
+Package: statsdcc
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Statsd-compatible high performance network daemon.
+ Statsdcc is a Statsd-compatible high performance multi-threaded network daemon written in C++.
+ It aggregates stats and sends aggregates to backends.

@@ -36,3 +36,5 @@ uninstall:
 	rm $(BINDIR)/statsdcc
 	rm $(BINDIR)/statsdcc-proxy
 
+debsrc:
+	debuild -S -sa --lintian-opts -i

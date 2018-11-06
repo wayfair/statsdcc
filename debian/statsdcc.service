@@ -1,0 +1,14 @@
+[Unit]
+Description=Statsdcc
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/statsdcc /etc/statsdcc/statsdcc.json
+StandardOutput=null
+KillMode=process
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=multi-user.target
