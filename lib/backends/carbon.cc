@@ -61,7 +61,7 @@ void Carbon::flush_stats(const Ledger& ledger, int flusher_id) {
     // get the destination carbon hostport
     Hostport n = this->hashring->get(key);
 
-    std::string metric_name = this->prefix + "counters." + this->process_name(key);
+    std::string metric_name = this->prefix + ::config->prefixCounter + this->process_name(key);
 
     stat_strings[n] +=
       metric_name + ".rate"
@@ -83,7 +83,7 @@ void Carbon::flush_stats(const Ledger& ledger, int flusher_id) {
       timer_itr != ledger.timer_data.cend();
       ++timer_itr) {
     std::string key = timer_itr->first;
-    std::string metric_name = this->prefix + "timers." + this->process_name(key);
+    std::string metric_name = this->prefix + ::config->prefixTimer + this->process_name(key);
 
     for (auto timer_data_itr = timer_itr->second.cbegin();
         timer_data_itr != timer_itr->second.cend();
@@ -108,7 +108,7 @@ void Carbon::flush_stats(const Ledger& ledger, int flusher_id) {
       gauge_itr != ledger.gauges.cend();
       ++gauge_itr) {
     std::string key = gauge_itr->first;
-    std::string metric_name = this->prefix + "gauges." + this->process_name(key);
+    std::string metric_name = this->prefix + ::config->prefixGauge + this->process_name(key);
 
     std::string value = std::to_string(
       static_cast<long double>(gauge_itr->second));
@@ -127,7 +127,7 @@ void Carbon::flush_stats(const Ledger& ledger, int flusher_id) {
       ++set_itr) {
     std::string key = set_itr->first;
     auto value = set_itr->second;
-    std::string metric_name = this->prefix + "sets." + this->process_name(key);
+    std::string metric_name = this->prefix + ::config->prefixSet + this->process_name(key);
 
     stat_strings[this->hashring->get(key)] +=
       metric_name + ".count"

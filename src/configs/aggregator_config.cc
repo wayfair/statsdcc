@@ -15,6 +15,23 @@ AggregatorConfig::AggregatorConfig(const Json::Value& json)
     this->prefix = this->prefix + ".";
   }
 
+  this->prefixCounter = json.get("prefix_counter", "counters").asString();
+  if(!this->prefixCounter.empty()) {
+    this->prefixCounter = this->prefixCounter + ".";
+  }
+  this->prefixTimer = json.get("prefix_timer", "timers").asString();
+  if(!this->prefixTimer.empty()) {
+    this->prefixTimer = this->prefixTimer + ".";
+  }
+  this->prefixGauge = json.get("prefix_gauge", "gauges").asString();
+  if(!this->prefixGauge.empty()) {
+    this->prefixGauge = this->prefixGauge + ".";
+  }
+  this->prefixSet = json.get("prefix_set", "sets").asString();
+  if(!this->prefixSet.empty()) {
+    this->prefixSet = this->prefixSet + ".";
+  }
+
   this->frequency = json.get("frequency", 10).asInt();
 
   Json::Value ps = json["percentiles"];

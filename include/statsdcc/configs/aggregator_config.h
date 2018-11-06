@@ -33,6 +33,11 @@ class AggregatorConfig : public Config {
 
   std::string prefix;
 
+  std::string prefixCounter;
+  std::string prefixTimer;
+  std::string prefixGauge;
+  std::string prefixSet;
+
   int frequency;       // default: 10
 
   std::vector<int> percentiles;  // default: [90]
