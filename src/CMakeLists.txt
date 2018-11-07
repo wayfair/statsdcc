@@ -31,6 +31,7 @@ target_link_libraries (statsdcc
   ${TCMALLOC_MINIMAL}
   ${MICROHTTPD}
   pthread
+  ${CMAKE_DL_LIBS}
 )
 
 add_executable (proxy proxy.cc)
