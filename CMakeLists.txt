@@ -86,6 +86,12 @@ if (NOT JSONCPP)
   lib_not_found("libjsoncpp.a")
 endif()
 
+find_path (JSONCPP_INCLUDE_DIR NAMES json/json.h PATH_SUFFIXES jsoncpp)
+if (NOT JSONCPP_INCLUDE_DIR)
+  message (FATAL_ERROR "Unable to find headers for JSONCPP.")
+endif()
+include_directories (${JSONCPP_INCLUDE_DIR})
+
 find_library (BOOST_REGEX NAMES libboost_regex.a boost_regex)
 if (NOT BOOST_REGEX)
   lib_not_found("libboost_regex.a")
