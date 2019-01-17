@@ -15,21 +15,21 @@ AggregatorConfig::AggregatorConfig(const Json::Value& json)
     this->prefix = this->prefix + ".";
   }
 
-  this->prefixCounter = json.get("prefix_counter", "counters").asString();
-  if(!this->prefixCounter.empty()) {
-    this->prefixCounter = this->prefixCounter + ".";
+  this->prefix_counter = json.get("prefix_counter", "counters").asString();
+  if(!this->prefix_counter.empty()) {
+    this->prefix_counter = this->prefix_counter + ".";
   }
-  this->prefixTimer = json.get("prefix_timer", "timers").asString();
-  if(!this->prefixTimer.empty()) {
-    this->prefixTimer = this->prefixTimer + ".";
+  this->prefix_timer = json.get("prefix_timer", "timers").asString();
+  if(!this->prefix_timer.empty()) {
+    this->prefix_timer = this->prefix_timer + ".";
   }
-  this->prefixGauge = json.get("prefix_gauge", "gauges").asString();
-  if(!this->prefixGauge.empty()) {
-    this->prefixGauge = this->prefixGauge + ".";
+  this->prefix_gauge = json.get("prefix_gauge", "gauges").asString();
+  if(!this->prefix_gauge.empty()) {
+    this->prefix_gauge = this->prefix_gauge + ".";
   }
-  this->prefixSet = json.get("prefix_set", "sets").asString();
-  if(!this->prefixSet.empty()) {
-    this->prefixSet = this->prefixSet + ".";
+  this->prefix_set = json.get("prefix_set", "sets").asString();
+  if(!this->prefix_set.empty()) {
+    this->prefix_set = this->prefix_set + ".";
   }
 
   this->frequency = json.get("frequency", 10).asInt();

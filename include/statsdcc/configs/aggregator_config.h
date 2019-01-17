@@ -33,10 +33,10 @@ class AggregatorConfig : public Config {
 
   std::string prefix;
 
-  std::string prefixCounter;
-  std::string prefixTimer;
-  std::string prefixGauge;
-  std::string prefixSet;
+  std::string prefix_counter;
+  std::string prefix_timer;
+  std::string prefix_gauge;
+  std::string prefix_set;
 
   int frequency;       // default: 10
 
